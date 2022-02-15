@@ -16,7 +16,7 @@ let onlineUsers = [
 }]
 for (let itemOnline of onlineUsers) {
 
-fs.writeFile(path.join(__dirname, 'main','online', '2file.txt'),
+fs.writeFile(path.join(__dirname, 'main','online', '1file.txt'),
     `name:${itemOnline.name}\n age:${itemOnline.age}\n city:${itemOnline.city}`,(err)=>{
         if(err){
             console.log(err);
@@ -36,10 +36,17 @@ fs.writeFile(path.join(__dirname, 'main','inPerson', '2file.txt'),
 })
 }
 function  swap (status){
-    fs.rename(path.join(__dirname,'inPerson','2file.txt'),path.join(__dirname,'online','file.txt'),(err)=>{
-        if(err){
-            console.log(err);
-        }
-    })
+    if (status === true){
+        fs.rename(path.join(__dirname,'inPerson','2file.txt'),path.join(__dirname,'online','file.txt'),(err)=>{
+            if(err){
+                console.log(err);
+            }
+        })
+        fs.rename(path.join(__dirname,'online','file.txt'),path.join(__dirname,'inPerson','2file.txt'),(err)=>{
+            if(err){
+                console.log(err);
+            }
+        })
+    }
 }
 swap(true)

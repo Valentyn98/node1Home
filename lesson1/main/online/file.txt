@@ -1,3 +1,0 @@
-name:undefined
- age:23
- city:Lviv
