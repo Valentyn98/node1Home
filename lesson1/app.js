@@ -35,19 +35,29 @@ fs.writeFile(path.join(__dirname, 'main','inPerson', '2file.txt'),
     }
 })
 }
+
+
+
 function  swap (status){
-    if (status === true){
-        fs.rename(path.join(__dirname,'main','inPerson','2file.txt'),path.join(__dirname,'online','1file.txt'),(err)=>{
+    if (status){
+        fs.writeFile(path.join(__dirname, 'main','online', '3file.txt'),'',(err)=>{
+            if (err) {
+                console.log(err);
+            }
+        })
+        fs.rename(path.join(__dirname,'main', 'online', '1file.txt'),
+            path.join(__dirname,'main','inPerson','1file.txt',),(err)=>{
             if(err){
                 console.log(err);
             }
         })
 
-        fs.rename(path.join(__dirname,'main','online','1file.txt'),path.join(__dirname,'inPerson','2file.txt'),(err)=>{
-            if(err){
-                console.log(err);
-            }
-        })
+        // fs.rename(path.join(__dirname,'main','inPerson','2file.txt'),
+        //     path.join(__dirname,'main','online','2file.txt'),(err)=>{
+        //     if(err){
+        //         console.log(err);
+        //     }
+        // })
     }
 }
 swap(true)
